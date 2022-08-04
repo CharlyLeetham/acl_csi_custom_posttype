@@ -75,22 +75,13 @@ function acl_register_taxonomy() {
 add_action( 'init', 'acl_register_taxonomy' );
 
 
-// This function tells WP to add a new "meta box"
-function acl_add_ee_meta_box() {
-    acl_ee_meta_box(
-        'acl-ee', // id of the <div> we'll add
-        'Zoom URL', //title
-        'acl_ee_zoom_url', // callback function that will echo the box content
-        'espresso_events' // where to add the box: on "post", "page", or "link" page
-    );
+add_action( 'add_meta_boxes', 'acl_meta_box_add' );
+function acl_meta_box_add()
+{
+    add_meta_box( 'acl-1', 'My First Meta Box', 'acl_meta_box_cb', 'post', 'normal', 'high' );
 }
 
-// This function echoes the content of our meta box
-function acl_ee_zoom_url() {
-    echo "I'm living in a box";
-}
-
-// Hook things in, late enough so that add_meta_box() is defined
-if (is_admin()) {
-    add_action('admin_menu', 'acl_add_ee_meta_box');
+function acl_meta_box_cb()
+{
+    echo 'What you put here, show\'s up in the meta box';
 }
