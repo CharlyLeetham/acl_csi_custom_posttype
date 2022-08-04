@@ -89,7 +89,21 @@ function acl_meta_box_add()
 function acl_meta_box_cb()
 {
     ?>
+		<p>
     <label for="zoom_url">Zoom URL</label>
     <input type="text" name="zoom_url" id="zoom_url" />
-    <?php    
+	</p>
+
+	<p>
+	<label for="zoom_url">Zoom URL</label>
+	<input type="text" name="zoom_url" id="zoom_url" />
+</p>
+
+<p>
+<label for="zoom_url">Zoom URL</label>
+<input type="text" name="zoom_url" id="zoom_url" />
+</p>
+
+
+    <?php
 }
