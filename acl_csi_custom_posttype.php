@@ -78,7 +78,7 @@ add_action( 'init', 'acl_register_taxonomy' );
 add_action( 'add_meta_boxes', 'acl_meta_box_add' );
 function acl_meta_box_add()
 {
-    add_meta_box( 'acl-1', 'My First Meta Box', 'acl_meta_box_cb', 'post', 'normal', 'high' );
+    add_meta_box( 'acl-1', 'My First Meta Box', 'acl_meta_box_cb', 'espresso_events', 'normal', 'high' );
 }
 
 function acl_meta_box_cb()
