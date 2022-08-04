@@ -78,10 +78,18 @@ add_action( 'init', 'acl_register_taxonomy' );
 add_action( 'add_meta_boxes', 'acl_meta_box_add' );
 function acl_meta_box_add()
 {
-    add_meta_box( 'acl-1', 'My First Meta Box', 'acl_meta_box_cb', 'espresso_events', 'normal', 'high' );
+    add_meta_box( 'acl-1', 'Zoom Details for Event', 'acl_meta_box_cb', 'espresso_events', 'normal', 'high' );
 }
+
+// function acl_meta_box_cb()
+// {
+//     echo 'What you put here, show\'s up in the meta box';
+// }
 
 function acl_meta_box_cb()
 {
-    echo 'What you put here, show\'s up in the meta box';
+    ?>
+    <label for="zoom_url">Zoom URL</label>
+    <input type="text" name="zoom_url" id="zoom_url" />
+    <?php    
 }
