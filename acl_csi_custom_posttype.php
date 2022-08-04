@@ -90,8 +90,8 @@ function acl_ee_zoom_url() {
     echo "I'm living in a box";
 }
 
-// Hook things in, late enough so that add_meta_box() is defined
-if (is_admin())
-    add_action('admin_menu', 'acl_add_ee_meta_box');
+// // Hook things in, late enough so that add_meta_box() is defined
+// if (is_admin())
+//     add_action('admin_menu', 'acl_add_ee_meta_box');
 
 ?>
