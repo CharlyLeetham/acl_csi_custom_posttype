@@ -95,10 +95,10 @@ function acl_meta_box_cb()
 
 		echo var_export ( $values,true );
 
-		$zoom_url = isset( $values['zoom_url'] ) ? $values['zoom_url'] : '';
-		$zoom_id = isset( $values['zoom_id'] ) ? $values['zoom_id'] : '';
-		$zoom_pwd = isset( $values['zoom_pwd'] ) ? $values['zoom_pwd'] : '';
-		$zoom_msg = isset( $values['zoom_msg'] ) ? $values['zoom_msg'] : '';
+		$zoom_url = isset( $values['zoom_url'] ) ? $values['zoom_url[0]'] : '';
+		$zoom_id = isset( $values['zoom_id'] ) ? $values['zoom_id[0]'] : '';
+		$zoom_pwd = isset( $values['zoom_pwd'] ) ? $values['zoom_pwd[0]'] : '';
+		$zoom_msg = isset( $values['zoom_msg'] ) ? $values['zoom_msg[0]'] : '';
 
 		// We'll use this nonce field later on when saving.
     wp_nonce_field( 'acl_zoom_meta_box_nonce', 'acl_zoom_box_nonce' );
