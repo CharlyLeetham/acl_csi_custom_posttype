@@ -91,11 +91,8 @@ function acl_meta_box_cb()
 
 			// $post is already set, and contains an object: the WordPress post
 		global $post;
-		$values = get_post_custom( $post->ID );
 
-		echo var_export ( $values,true );
-
-		$zoom_url = isset( $values['zoom_url'] ) ? $values['zoom_url[0]'] : '';
+		$zoom_url = isset( get_post_meta($post->ID, '_zoom_url', true) ) ? get_post_meta($post->ID, '_zoom_url', true) : '';
 		$zoom_id = isset( $values['zoom_id'] ) ? $values['zoom_id[0]'] : '';
 		$zoom_pwd = isset( $values['zoom_pwd'] ) ? $values['zoom_pwd[0]'] : '';
 		$zoom_msg = isset( $values['zoom_msg'] ) ? $values['zoom_msg[0]'] : '';
