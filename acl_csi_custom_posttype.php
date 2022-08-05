@@ -132,8 +132,6 @@ add_action( 'save_post', 'acl_meta_box_save' );
 function acl_meta_box_save( $post_id )
 {
 
-		var_dump ( $_POST['zoom_msg'] );
-		die();
     // Bail if we're doing an auto save
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
 
@@ -164,6 +162,8 @@ function acl_meta_box_save( $post_id )
 		}
 
 		if ( isset( $_POST['zoom_msg'] ) ) {
+			var_dump ( $_POST['zoom_msg'] );
+			die();
 		        update_post_meta( $post->ID, 'zoom_msg', $_POST['zoom_msg'] );
 		}
 
