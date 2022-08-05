@@ -88,6 +88,9 @@ function acl_meta_box_add()
 
 function acl_meta_box_cb()
 {
+
+		// We'll use this nonce field later on when saving.
+    wp_nonce_field( 'acl_zoom_meta_box_nonce', 'acl_zoom_box_nonce' );
 ?>
 	<p>
   <label for="zoom_url">Zoom URL</label>
@@ -95,23 +98,61 @@ function acl_meta_box_cb()
 	</p>
 
 	<p>
-	<label for="zoom_url">Zoom ID</label>
+	<label for="zoom_id">Zoom ID</label>
 	<input type="text" name="zoom_id" id="zoom_id" />
 	</p>
 
 	<p>
-	<label for="zoom_url">Zoom Password</label>
+	<label for="zoom_pwd">Zoom Password</label>
 	<input type="text" name="zoom_pwd" id="zoom_pwd" />
 	</p>
 
 	<p>
 	<label for="zoom_msg">Zoom Message</label>
 	<?php
-		wp_editor( $content, 'diwp_custom_editor', array() );
+		wp_editor( $content, 'zoom_msg', array() );
 	?>
 	</p>
+<?php
+}
+
+add_action( 'save_post', 'acl_meta_box_save' );
+
+add_action( 'save_post', 'acl_meta_box_save' );
+function acl_meta_box_save( $post_id )
+{
+    // Bail if we're doing an auto save
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+
+		// if our nonce isn't there, or we can't verify it, bail
+		if ( !isset( $_POST['acl_zoom_box_nonce'] ) || !wp_verify_nonce( $_POST['acl_zoom_box_nonce'], 'acl_zoom_meta_box_nonce' ) ) return;
+
+		// if our current user can't edit this post, bail
+		if ( !current_user_can( 'edit_post' ) ) return;
+
+		// now we can actually save the data
+    $allowed = array(
+        'a' => array( // on allow a tags
+            'href' => array() // and those anchors can only have href attribute
+        )
+    );
+
+    // Make sure your data is set before trying to save it
+    if( isset( $_POST['zoom_url'] ) ) {
+        update_post_meta( $post_id, 'zoom_url', wp_kses( $_POST['zoom_url'], $allowed ) );
+		}
+
+    if( isset( $_POST['zoom_id'] ) ) {
+        update_post_meta( $post_id, 'zoom_id', esc_attr( $_POST['zoom_id'] ) );
+		}
+
+    if( isset( $_POST['zoom_pwd'] ) ) {
+        update_post_meta( $post_id, 'zoom_pwd', esc_attr( $_POST['zoom_pwd'] ) );
+		}
+
+		if ( isset( $_POST['_zoom_msg'] ) ) {
+		        update_post_meta($post->ID, '_zoom_msg', $_POST['_zoom_msg']);
+		}
 
 
-
-    <?php
 }
