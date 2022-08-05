@@ -93,6 +93,8 @@ function acl_meta_box_cb()
 		global $post;
 		$values = get_post_custom( $post->ID );
 
+		echo var_export ( $values,true );
+
 		$zoom_url = isset( $values['zoom_url'] ) ? $values['zoom_url'] : '';
 		$zoom_id = isset( $values['zoom_id'] ) ? $values['zoom_id'] : '';
 		$zoom_pwd = isset( $values['zoom_pwd'] ) ? $values['zoom_pwd'] : '';
