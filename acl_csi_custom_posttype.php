@@ -168,7 +168,7 @@ function acl_meta_box_save( $post_id )
 			echo '<br />';
 
 
-      $result = update_post_meta( $post->ID, strip_slashes( 'zoom_msg' ), $_POST['zoom_msg'] );
+      $result = update_post_meta( $post->ID, 'zoom_msg', stripslashes ( $_POST['zoom_msg'] ) );
 			var_dump ( $result );
 			echo '<br />';
 			$zoom_msg = get_post_meta($post->ID, 'zoom_msg', true);
