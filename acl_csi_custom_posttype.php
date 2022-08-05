@@ -123,7 +123,7 @@ function acl_meta_box_cb()
 	<label for="zoom_msg">Zoom Message</label>
 	<?php
 		$settings = array( 'wpautop' => true, 'media_buttons' => false );
-		wp_editor( $zoom_msg, 'zoom_msg', $settings );
+		wp_editor( $zoom_msg, '_zoom_msg', $settings );
 	?>
 	</p>
 <?php
@@ -162,16 +162,16 @@ function acl_meta_box_save( $post_id )
         update_post_meta( $post_id, 'zoom_pwd', esc_attr( $_POST['zoom_pwd'] ) );
 		}
 
-		if ( isset( $_POST['zoom_msg'] ) ) {
+		if ( isset( $_POST['_zoom_msg'] ) ) {
 
-			var_dump( $_POST['zoom_msg'] );
+			var_dump( $_POST['_zoom_msg'] );
 			echo '<br />';
 
 
-      $result = update_post_meta( $post->ID, 'zoom_msg', stripslashes ( $_POST['zoom_msg'] ) );
+      $result = update_post_meta( $post->ID, '_zoom_msg', stripslashes ( $_POST['_zoom_msg'] ) );
 			var_dump ( $result );
 			echo '<br />';
-			$zoom_msg = get_post_meta($post->ID, 'zoom_msg', true);
+			$zoom_msg = get_post_meta($post->ID, '_zoom_msg', true);
 			var_dump ( $zoom_msg );
 		}
 
