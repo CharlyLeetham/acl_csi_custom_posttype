@@ -162,17 +162,18 @@ function acl_meta_box_save( $post_id )
         update_post_meta( $post_id, 'zoom_pwd', esc_attr( $_POST['zoom_pwd'] ) );
 		}
 
-		if ( isset( $_POST['_zoom_msg'] ) ) {
+		if ( isset( $_POST['zoom_msg'] ) ) {
 
-			var_dump( $_POST['_zoom_msg'] );
+			var_dump( $_POST['zoom_msg'] );
 			echo '<br />';
 
 
-      $result = update_post_meta( $post->ID, '_zoom_msg', stripslashes ( $_POST['_zoom_msg'] ) );
+      $result = update_post_meta( $post_id, 'zoom_msg', stripslashes ( $_POST['zoom_msg'] ) );
 			var_dump ( $result );
 			echo '<br />';
-			$zoom_msg = get_post_meta($post->ID, '_zoom_msg', true);
+			$zoom_msg = get_post_meta($post_id, 'zoom_msg', true);
 			var_dump ( $zoom_msg );
+			die();
 		}
 
 
