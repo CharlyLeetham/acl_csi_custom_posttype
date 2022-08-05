@@ -89,24 +89,33 @@ function acl_meta_box_add()
 function acl_meta_box_cb()
 {
 
+			// $post is already set, and contains an object: the WordPress post
+		global $post;
+		$values = get_post_custom( $post->ID );
+
+		$zoom_url = isset( $values['zoom_url'] ) ? $values['zoom_url'] : '';
+		$zoom_id = isset( $values['zoom_id'] ) ? $values['zoom_id'] : '';
+		$zoom_pwd = isset( $values['zoom_pwd'] ) ? $values['zoom_pwd'] : '';
+		$zoom_msg = isset( $values['zoom_msg'] ) ? $values['zoom_msg'] : '';
+
 		// We'll use this nonce field later on when saving.
     wp_nonce_field( 'acl_zoom_meta_box_nonce', 'acl_zoom_box_nonce' );
 ?>
 	<p>
   <label for="zoom_url">Zoom URL</label>
-  <input type="text" name="zoom_url" id="zoom_url" />
+  <input type="text" name="zoom_url" id="zoom_url" value="<?php echo $zoom_url; ?>" />
 	</p>
 
 	<p>
 	<label for="zoom_id">Zoom ID</label>
-	<input type="text" name="zoom_id" id="zoom_id" />
+	<input type="text" name="zoom_id" id="zoom_id" value="<?php echo $zoom_id; ?>" />
 	</p>
 
 	<p>
 	<label for="zoom_pwd">Zoom Password</label>
-	<input type="text" name="zoom_pwd" id="zoom_pwd" />
+	<input type="text" name="zoom_pwd" id="zoom_pwd" value="<?php echo $zoom_pwd; ?>" />
 	</p>
-
+	
 	<p>
 	<label for="zoom_msg">Zoom Message</label>
 	<?php
