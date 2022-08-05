@@ -173,7 +173,6 @@ function acl_meta_box_save( $post_id )
 			echo '<br />';
 			$zoom_msg = get_post_meta($post->ID, 'zoom_msg', true);
 			var_dump ( $zoom_msg );
-			die();
 		}
 
 
