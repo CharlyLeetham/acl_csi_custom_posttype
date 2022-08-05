@@ -88,21 +88,29 @@ function acl_meta_box_add()
 
 function acl_meta_box_cb()
 {
-    ?>
-		<p>
-    <label for="zoom_url">Zoom URL</label>
-    <input type="text" name="zoom_url" id="zoom_url" />
+?>
+	<p>
+  <label for="zoom_url">Zoom URL</label>
+  <input type="text" name="zoom_url" id="zoom_url" />
 	</p>
 
 	<p>
-	<label for="zoom_url">Zoom URL</label>
-	<input type="text" name="zoom_url" id="zoom_url" />
-</p>
+	<label for="zoom_url">Zoom ID</label>
+	<input type="text" name="zoom_id" id="zoom_id" />
+	</p>
 
-<p>
-<label for="zoom_url">Zoom URL</label>
-<input type="text" name="zoom_url" id="zoom_url" />
-</p>
+	<p>
+	<label for="zoom_url">Zoom Password</label>
+	<input type="text" name="zoom_pwd" id="zoom_pwd" />
+	</p>
+
+	<p>
+	<label for="zoom_msg">Zoom Message</label>
+	<?php
+		wp_editor( $content, 'diwp_custom_editor', array() );
+	?>
+	</p>
+
 
 
     <?php
