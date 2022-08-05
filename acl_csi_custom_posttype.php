@@ -103,7 +103,7 @@ function acl_meta_box_cb()
 ?>
 	<p>
   <label for="zoom_url">Zoom URL</label>
-  <input type="text" name="zoom_url" id="zoom_url" value="<?php var_export( $zoom_url, true ); ?>" />
+  <input type="text" name="zoom_url" id="zoom_url" value="<?php echo $zoom_url; ?>" />
 	</p>
 
 	<p>
