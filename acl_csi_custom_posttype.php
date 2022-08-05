@@ -129,8 +129,6 @@ function acl_meta_box_cb()
 }
 
 add_action( 'save_post', 'acl_meta_box_save' );
-
-add_action( 'save_post', 'acl_meta_box_save' );
 function acl_meta_box_save( $post_id )
 {
     // Bail if we're doing an auto save
@@ -162,8 +160,8 @@ function acl_meta_box_save( $post_id )
         update_post_meta( $post_id, 'zoom_pwd', esc_attr( $_POST['zoom_pwd'] ) );
 		}
 
-		if ( isset( $_POST['_zoom_msg'] ) ) {
-		        update_post_meta($post->ID, '_zoom_msg', $_POST['_zoom_msg']);
+		if ( isset( $_POST['zoom_msg'] ) ) {
+		        update_post_meta($post->ID, 'zoom_msg', $_POST['zoom_msg']);
 		}
 
 
