@@ -162,9 +162,10 @@ function acl_meta_box_save( $post_id )
 		}
 
 		if ( isset( $_POST['zoom_msg'] ) ) {
-			var_dump ( $_POST['zoom_msg'] );
-			die();
 		        update_post_meta( $post->ID, 'zoom_msg', $_POST['zoom_msg'] );
+$zoom_msg = get_post_meta($post->ID, 'zoom_msg', true);
+						var_dump ( $zoom_msg );
+						die();
 		}
 
 
