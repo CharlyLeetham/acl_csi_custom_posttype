@@ -122,7 +122,7 @@ function acl_meta_box_cb()
 	<p>
 	<label for="zoom_msg">Zoom Message</label>
 	<?php
-		wp_editor( $content, 'zoom_msg', array() );
+		wp_editor( $zoom_msg, 'zoom_msg', array() );
 	?>
 	</p>
 <?php
