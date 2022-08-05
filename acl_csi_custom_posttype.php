@@ -93,10 +93,13 @@ function acl_meta_box_cb()
 		global $post;
 
 		$zoom_url = get_post_meta($post->ID, 'zoom_url', true);
+		$zoom_id = get_post_meta($post->ID, 'zoom_id', true);
+		$zoom_pwd = get_post_meta($post->ID, 'zoom_pwd', true);
+		$zoom_msg = get_post_meta($post->ID, 'zoom_msg', true);
 		$zoom_url = isset( $zoom_url ) ? $zoom_url : '';
-		$zoom_id = isset( $values['zoom_id'] ) ? $values['zoom_id[0]'] : '';
-		$zoom_pwd = isset( $values['zoom_pwd'] ) ? $values['zoom_pwd[0]'] : '';
-		$zoom_msg = isset( $values['zoom_msg'] ) ? $values['zoom_msg[0]'] : '';
+		$zoom_id = isset( $zoom_id ) ? $zoom_id : '';
+		$zoom_pwd = isset( $zoom_pwd ) ? $zoom_pwd : '';
+		$zoom_msg = isset( $zoom_msg ) ? $zoom_msg : '';
 
 		// We'll use this nonce field later on when saving.
     wp_nonce_field( 'acl_zoom_meta_box_nonce', 'acl_zoom_box_nonce' );
